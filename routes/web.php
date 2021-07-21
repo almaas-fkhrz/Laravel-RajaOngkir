@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/province/{id}/cities', 'HomeController@getCities');
+Route::post('/', 'HomeController@submit');
