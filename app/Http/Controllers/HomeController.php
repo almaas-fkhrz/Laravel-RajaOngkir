@@ -32,6 +32,21 @@ class HomeController extends Controller
             'weight' => $request->weight,
             'courier' => $request->courier
         ])->get();
-        dd($cost[0]['costs']);
+
+        $courier = $cost[0]['name'];
+        $weight = $request->weight;
+        $origin = RajaOngkir::kota()->find($request->city_origin);
+        $destination = RajaOngkir::kota()->find($request->city_destination);
+
+        $rows = [];
+        foreach ($cost[0]['costs'] as $row) {
+            $rows[] = [
+            'description' => $row['description'],
+            'cost' => $row['cost'][0]['value'],
+            'etd' => $row['cost'][0]['etd']
+            ];
+        }
+        return view('result', ['courier' => $courier, 'weight' => $weight, 'rows' => $rows, 'origin' => $origin,
+        'destination' => $destination]);
     }
 }
