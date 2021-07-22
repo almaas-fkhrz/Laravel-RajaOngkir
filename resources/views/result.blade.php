@@ -15,7 +15,7 @@
 
 <body>
     <div class="container mt-3">
-        <div class="row justify-content center">
+        <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
